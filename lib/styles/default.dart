@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
 
+const myPurple = Color(0xff440066);
+const myYellow = Color(0xffFFEE00);
+const myBlack = Color(0xff333333);
+const myWhite = Color(0xffEEEEEE);
+
 ThemeData defaultTheme() {
   return ThemeData(
-    primaryColor: Color(0xff440066),
-    accentColor: Color(0xffFFEE00),
-    hintColor: Color(0xff333333),
-    dividerColor: Color(0xffEEEEEE),
-    buttonColor: Color(0xff440066),
-    scaffoldBackgroundColor: Color(0xffEEEEEE),
-    canvasColor: Color(0xffEEEEEE),
+    primaryColor: myPurple,
+    accentColor: myYellow,
+    hintColor: myBlack,
+    dividerColor: myWhite,
+    buttonColor: myPurple,
+    scaffoldBackgroundColor: myWhite,
+    canvasColor: myWhite,
     fontFamily: 'Montserrat',
     textTheme: TextTheme(
 
@@ -20,12 +25,13 @@ ThemeData defaultTheme() {
       headline2: TextStyle(
         fontSize: 24.0,
         fontWeight: FontWeight.w500,
-        color: Color(0xffFFEE00)
+        color: myYellow
       ),
 
       bodyText1: TextStyle(
         fontSize: 20.0,
-        fontWeight: FontWeight.w500
+        fontWeight: FontWeight.w500,
+        color: myBlack
       ),
 
     )
