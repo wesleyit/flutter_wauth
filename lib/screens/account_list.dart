@@ -44,11 +44,11 @@ class AccountListScreen extends StatelessWidget {
                 callback: () {},
               ),
             ]),
-        floatingButton: FloatingActionButton(
-          child: Icon(Icons.add),
-          backgroundColor: myPurple,
-          foregroundColor: myYellow,
-          onPressed: () {},
+        floatingButton: WFloatingButton(
+          iconData: Icons.add,
+          callback: () {
+            Navigator.of(context).pushNamed('/QRCode');
+          },
         ));
   }
 }

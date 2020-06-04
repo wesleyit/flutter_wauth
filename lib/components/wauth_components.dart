@@ -86,3 +86,22 @@ class WCardofList extends StatelessWidget {
     );
   }
 }
+
+
+class WFloatingButton extends StatelessWidget {
+  final IconData iconData;
+  final Function callback;
+  WFloatingButton({
+    @required this.iconData,
+    @required this.callback,
+  });
+  @override
+  Widget build(context) {
+    return FloatingActionButton(
+          child: Icon(iconData),
+          backgroundColor: myPurple,
+          foregroundColor: myYellow,
+          onPressed: callback,
+        );
+  }
+}
