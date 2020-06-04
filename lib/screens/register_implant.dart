@@ -24,13 +24,18 @@ class RegisterImplantScreen extends StatelessWidget {
                     style: t.textTheme.bodyText1,
                     decoration: InputDecoration(hintText: 'PIN (4 digits)'),
                     obscureText: true),
-                SizedBox(height: 45.0),
-                WButton(title: 'Scan', iconData: Icons.wifi, callback: () {}),
+                SizedBox(height: 80.0),
+                WButton(
+                    title: 'Scan',
+                    iconData: Icons.wifi,
+                    callback: () {
+                      Navigator.of(context).pushNamed('/AccountList');
+                    }),
                 Padding(
                     padding: EdgeInsets.only(
                         bottom: MediaQuery.of(context).viewInsets.bottom))
-              ],
-            ),
+              ]
+            )
           ),
         ]));
   }

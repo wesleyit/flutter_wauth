@@ -27,6 +27,12 @@ ThemeData defaultTheme() {
         fontWeight: FontWeight.w500,
         color: myYellow
       ),
+      
+      headline5: TextStyle(
+        fontSize: 22.0,
+        fontWeight: FontWeight.w900,
+        color: myPurple
+      ),
 
       bodyText1: TextStyle(
         fontSize: 20.0,
