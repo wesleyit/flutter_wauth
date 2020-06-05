@@ -8,7 +8,7 @@ class RegisterImplantScreen extends StatelessWidget {
     return WScreen(
         title: 'Register your implant',
         child: Column(children: <Widget>[
-          Image.asset('assets/images/padlock.png'),
+          Image.asset('assets/images/padlock_01.png'),
           Padding(
               padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 0.0),
               child: Column(

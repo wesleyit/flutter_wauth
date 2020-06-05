@@ -17,13 +17,11 @@ flutter:
   assets:
     - assets/images/
   fonts:
-    - family: Montserrat
+    - family: AmazonEmber
       fonts:
-        - asset: assets/fonts/Montserrat-Black.ttf
-          weight: 900
-        - asset: assets/fonts/Montserrat-Medium.ttf
-          weight: 500
-        - asset: assets/fonts/Montserrat-Light.ttf
-          weight: 300
-        - asset: assets/fonts/Montserrat-Thin.ttf
-          weight: 100
+        - asset: assets/fonts/AmazonEmberBold.ttf
+          weight: 800
+        - asset: assets/fonts/AmazonEmberMedium.ttf
+          weight: 400
+        - asset: assets/fonts/AmazonEmberLight.ttf
+          weight: 200

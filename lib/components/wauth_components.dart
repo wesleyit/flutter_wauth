@@ -16,18 +16,18 @@ class WButton extends StatelessWidget {
     return RaisedButton(
       onPressed: callback,
       padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 10.0),
-      splashColor: myYellow,
+      splashColor: l_gray,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(50.0),
+        borderRadius: BorderRadius.circular(20.0),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
           Icon(
             iconData,
-            color: myYellow,
+            color: l_gray,
           ),
-          Text(title, style: t.textTheme.headline2)
+          Text('  ' + title, style: t.textTheme.headline2)
         ],
       ),
     );
@@ -68,15 +68,17 @@ class WCardofList extends StatelessWidget {
   Widget build(context) {
     var t = Theme.of(context);
     return Card(
+      color: Color(0xffFEFEFF),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           ListTile(
+            contentPadding: EdgeInsets.all(20.0),
             onTap: callback,
             leading: Icon(
               iconData,
               size: 40,
-              color: myPurple,
+              color: t.primaryColor
             ),
             title: Text('  ' + title, style: t.textTheme.headline5),
             subtitle: Text('   ' + description, style: t.textTheme.bodyText1),
@@ -99,8 +101,8 @@ class WFloatingButton extends StatelessWidget {
   Widget build(context) {
     return FloatingActionButton(
           child: Icon(iconData),
-          backgroundColor: myPurple,
-          foregroundColor: myYellow,
+          backgroundColor: d_purple,
+          foregroundColor: l_gray,
           onPressed: callback,
         );
   }

@@ -9,7 +9,9 @@ class AccountTOTPScreen extends StatelessWidget {
     return WScreen(
         title: 'Account TOTP:',
         child: WCardofList(
-          callback: () {},
+          callback: () {
+            Navigator.of(context).pushNamed('/AccountLists');
+          },
           description: '998-876',
           title: 'Amazon Web Services',
           iconData: FontAwesomeIcons.aws,

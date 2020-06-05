@@ -17,7 +17,7 @@ class SplashScreen extends StatelessWidget {
               SizedBox(height: 100),
               Text(
                 'W A U T H',
-                style: t.textTheme.headline1.apply(color: Colors.yellow),
+                style: t.textTheme.headline1.apply(color: t.accentColor),
               ),
             ],
           ),

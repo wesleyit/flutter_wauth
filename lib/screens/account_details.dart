@@ -12,7 +12,9 @@ class AccountDetailsScreen extends StatelessWidget {
           title: 'Amazon Web Services',
           description: 'john.doe@mail.com\n   TOTP://hmac-22309-998989',
           iconData: FontAwesomeIcons.aws,
-          callback: () {},
+          callback: () {
+            Navigator.of(context).pushNamed('/AccountTOTP');
+          },
         ));
   }
 }

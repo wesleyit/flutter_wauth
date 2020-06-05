@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wauth/components/wauth_components.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:wauth/styles/default.dart';
 
 class AccountListScreen extends StatelessWidget {
   @override
