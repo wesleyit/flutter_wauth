@@ -4,7 +4,8 @@ import 'dart:async';
 class SplashScreen extends StatelessWidget {
   @override
   Widget build(context) {
-    Timer(Duration(seconds: 3), () => Navigator.of(context).pushNamed('/RegisterImplant'));
+    Timer(Duration(seconds: 3),
+        () => Navigator.of(context).pushNamed('/RegisterImplant'));
     var t = Theme.of(context);
     return Scaffold(
         backgroundColor: t.primaryColor,
