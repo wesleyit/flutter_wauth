@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:wauth/components/wauth_components.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:wauth/components/storage.dart';
+import 'package:wauth/components/crypto.dart';
 
 class AccountListScreen extends StatelessWidget {
+  final Storage db = Storage('testStorage.db');
+  final Crypto crypto = Crypto('1234PASSWORD1234');
   @override
   Widget build(context) {
     // var t = Theme.of(context);
@@ -16,31 +20,42 @@ class AccountListScreen extends StatelessWidget {
                 title: 'Amazon Web Services',
                 description: 'john.doe@mail.com',
                 iconData: FontAwesomeIcons.aws,
-                callback: () {},
+                callback: () {
+                  this.db.write('player', crypto.encrypt('amazon web services'));
+                },
               ),
               WCardofList(
                 title: 'Amazon.com',
                 description: 'john.doe@mail.com',
                 iconData: FontAwesomeIcons.amazon,
-                callback: () {},
+                callback: () {
+                  this.db.write('player', 'amazon.com');
+                },
               ),
               WCardofList(
                 title: 'Facebook',
                 description: 'john.doe@mail.com',
                 iconData: FontAwesomeIcons.facebook,
-                callback: () {},
+                callback: () {
+                  this.db.write('player', 'Facebook');
+                },
               ),
               WCardofList(
                 title: 'Google Account',
                 description: 'john.doe@gmail.com',
                 iconData: FontAwesomeIcons.google,
-                callback: () {},
+                callback: () {
+                  this.db.write('player', 'google');
+                },
               ),
               WCardofList(
                 title: 'Work Mail',
                 description: 'john.doe@work.acme.inc',
                 iconData: Icons.business,
-                callback: () {},
+                callback: () {
+                  print(this.db.read('player'));
+                  print(crypto.decrypt(this.db.read('player')));
+                },
               ),
             ]),
         floatingButton: WFloatingButton(

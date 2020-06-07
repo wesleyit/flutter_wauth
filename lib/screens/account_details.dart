@@ -5,7 +5,7 @@ import 'package:wauth/components/wauth_components.dart';
 class AccountDetailsScreen extends StatelessWidget {
   @override
   Widget build(context) {
-    var t = Theme.of(context);
+    // var t = Theme.of(context);
     return WScreen(
         title: 'Account Details',
         child: WCardofList(
