@@ -1,9 +1,39 @@
 import 'package:flutter/material.dart';
 import 'package:wauth/components/wauth_components.dart';
+import 'package:nfc_manager/nfc_manager.dart';
 
-class RegisterImplantScreen extends StatelessWidget {
+class RegisterImplantScreen extends StatefulWidget {
   @override
-  Widget build(context) {
+  State<StatefulWidget> createState() => RegisterImplantState();
+}
+
+class RegisterImplantState extends State<RegisterImplantScreen> {
+  String implantPIN = '';
+  String implantName = '';
+  String readUID = '';
+
+  String toHex(int num) {
+    return num.toRadixString(16).padLeft(2, '0').toUpperCase();
+  }
+
+  void readKey(BuildContext context) {
+    NfcManager.instance.startTagSession(onDiscovered: (NfcTag tag) async {
+      Ndef ndef = Ndef.fromTag(tag);
+      NdefMessage cachedMessage = ndef.cachedMessage;
+      print(cachedMessage);
+      setState(() {
+        readUID = tag.data['id'].map((num) => toHex(num)).toList().join(':');
+      });
+      NfcManager.instance.stopSession();
+      setState(() {});
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    NfcManager.instance
+        .isAvailable()
+        .then((value) => print('NFC is present: $value'));
     var t = Theme.of(context);
     return WScreen(
         title: 'Register your implant',
@@ -16,21 +46,25 @@ class RegisterImplantScreen extends StatelessWidget {
                   children: <Widget>[
                     SizedBox(height: 30.0),
                     TextField(
+                        onChanged: (value) =>
+                            setState(() => implantName = value),
                         style: t.textTheme.bodyText1,
                         decoration: InputDecoration(hintText: 'Implant name')),
                     SizedBox(height: 30.0),
                     TextField(
+                        onChanged: (value) =>
+                            setState(() => implantPIN = value),
                         keyboardType: TextInputType.number,
                         style: t.textTheme.bodyText1,
                         decoration: InputDecoration(hintText: 'PIN (4 digits)'),
                         obscureText: true),
+                    SizedBox(height: 40.0),
+                    Text(readUID, style: t.textTheme.bodyText1),
                     SizedBox(height: 80.0),
                     WButton(
                         title: 'Scan',
                         iconData: Icons.wifi,
-                        callback: () {
-                          Navigator.of(context).pushNamed('/AccountList');
-                        }),
+                        callback: () => readKey(context)),
                     Padding(
                         padding: EdgeInsets.only(
                             bottom: MediaQuery.of(context).viewInsets.bottom))

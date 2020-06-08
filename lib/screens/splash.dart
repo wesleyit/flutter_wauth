@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
-import 'dart:io';
-import 'package:path_provider/path_provider.dart';
+import 'package:wauth/components/storage.dart';
 
 class SplashScreen extends StatelessWidget {
+  final Storage db = Storage('devStorage.db');
+
   @override
   Widget build(context) {
-    Timer(Duration(seconds: 3), () async {
+    Timer(Duration(seconds: 5), () async {
       try {
-        final directory = await getApplicationDocumentsDirectory();
-        final file = File('${directory.path}/my_file.txt');
-        String text = await file.readAsString();
-        print('Profile found with: ' + text);
+        String profile = this.db.read('profile');
+        if (profile == null){ throw('Profile null'); }
+        print('Profile found! Name: $profile.');
         Navigator.of(context).pushNamed('/AccountList');
       } catch (e) {
         print('Profile not found!');
