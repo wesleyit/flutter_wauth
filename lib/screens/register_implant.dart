@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wauth/components/storage.dart';
 import 'package:wauth/components/wauth_components.dart';
 import 'package:nfc_manager/nfc_manager.dart';
 
@@ -11,6 +12,7 @@ class RegisterImplantState extends State<RegisterImplantScreen> {
   String implantPIN = '';
   String implantName = '';
   String readUID = '';
+  Storage db = Storage('devStorage.db');
 
   String toHex(int num) {
     return num.toRadixString(16).padLeft(2, '0').toUpperCase();
@@ -23,9 +25,13 @@ class RegisterImplantState extends State<RegisterImplantScreen> {
       print(cachedMessage);
       setState(() {
         readUID = tag.data['id'].map((num) => toHex(num)).toList().join(':');
+        db.write('profile', implantName);
+        db.write('UID', readUID);
+        if (readUID.length > 4) {
+          Navigator.of(context).pushNamed('/AccountLists');
+        }
       });
       NfcManager.instance.stopSession();
-      setState(() {});
     });
   }
 
